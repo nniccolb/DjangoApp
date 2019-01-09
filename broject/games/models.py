@@ -4,6 +4,7 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
 
 class Game(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    creator = models.CharField(max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    price = models.IntegerField
+    title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
