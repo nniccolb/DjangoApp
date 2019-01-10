@@ -11,3 +11,4 @@ class Game(models.Model):
     price = models.IntegerField
     title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
+    
