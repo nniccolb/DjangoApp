@@ -10,5 +10,5 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
-def singleView(request, game_id):
-    return HttpResponse("<h1>Single game view for game #" + str(game_id) + "</h1>")
+def categoryView(request, category_id):
+    return HttpResponse("<h1>Single category view for caregory #" + str(category_id) + "</h1>")
