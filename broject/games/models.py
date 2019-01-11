@@ -8,7 +8,9 @@ class Category(models.Model):
 
 class Game(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    price = models.IntegerField
+    price = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
-    
+
+    def __str__(self):
+        return self.title
