@@ -11,6 +11,7 @@ class Game(models.Model):
     price = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
+    favorite = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

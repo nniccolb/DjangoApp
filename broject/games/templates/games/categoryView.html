@@ -1,8 +1,27 @@
 <p> {{category.name}} </p>
 
-<h1> {{category.title}} </h1>
-  <ul>
-    {% for game in category.game_set.all  %}
-    <li>{{game.title}}</li>
-    {% endfor %}
-    </ul>
+{% if error_message %}
+  <p>
+    <strong>
+      {{error_message}}
+    </strong>
+  </p>
+{% endif %}
+
+<form action="{% url 'favorite' category.id %}" method="post">
+  {% csrf_token %}
+  {% for game in category.game_set.all %}
+    <input type="radio" id="game{{ forloop.counter}}" name="game" value="{{game.id}}" />
+    <label for="game{{ forloop.counter }}">
+      {{game.title}}
+      {% if game.favorite %}
+        <p>
+          x
+        </p>
+      {% endif %}
+
+    </label> <br />
+
+  {% endfor %}
+  <input type="submit" value="This is my favorite"/>
+</form>

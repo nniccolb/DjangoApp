@@ -1,9 +1,10 @@
 {% if all_categories %}
-    <ul>
-        {% for category in all_categories %}
-        <li><a href="{% url 'categoryView' category.id %}">{{ category.name }}</a></li>
-        {% endfor %}
-    </ul>
+  <ul>
+       {% for category in all_categories %}
+       <li><a href="{% url 'categoryView' category.id %}">{{ category.name }}</a></li>
+       {% endfor %}
+   </ul>
+
 {% else %}
     <a>No categories to display</a>
 {% endif %}
