@@ -1,3 +1,7 @@
 body {
     background: whitesmoke url("images/block_bg.jpg")
 }
+
+.container-fluid {
+    background: white;
+}
