@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'games/stylesheet.css' %}" />
+
 {% if all_categories %}
   <ul>
        {% for category in all_categories %}
