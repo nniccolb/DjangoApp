@@ -11,21 +11,11 @@
   </p>
   {% endif %}
 
-  <form action="{% url 'favorite' category.id %}" method="post">
-    {% csrf_token %}
+  {% csrf_token %}
     {% for game in category.game_set.all %}
-      <input type="radio" id="game{{ forloop.counter}}" name="game" value="{{game.id}}" />
       <label for="game{{ forloop.counter }}">
         {{game.title}}
-        {% if game.favorite %}
-          <p>
-            x
-          </p>
-          {% endif %}
+      </label> <br />
 
-        </label> <br />
-
-        {% endfor %}
-        <input type="submit" value="This is my favorite"/>
-  </form>
+    {% endfor %}
 {% endblock %}
