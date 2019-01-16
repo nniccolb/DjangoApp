@@ -15,7 +15,7 @@ class Game(models.Model):
     favorite = models.BooleanField(default=False)
 
     def get_absolute_url(self):
-        return reverse('index', kwargs={'pk': self.pk})
+        return reverse( 'games:index')
 
     def __str__(self):
         return self.title
