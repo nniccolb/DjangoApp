@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -12,6 +13,9 @@ class Game(models.Model):
     title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
     favorite = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+        return reverse('index', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title
