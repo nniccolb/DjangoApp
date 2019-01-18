@@ -26,8 +26,6 @@ class GameView(generic.DetailView):
 class GameCreate(CreateView):
     model = Game
     fields = ['category', 'price', 'title', 'source']
-<<<<<<< HEAD
-=======
 
 class LoginView(View):
     form_class = UserForm
@@ -55,4 +53,3 @@ class LoginView(View):
                     return redirect('games:index')
 
         return render(request, self.template_name, {'form': form})
->>>>>>> login
