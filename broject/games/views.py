@@ -27,9 +27,9 @@ class GameCreate(CreateView):
     model = Game
     fields = ['category', 'price', 'title', 'source']
 
-class LoginView(View):
+class Registration(View):
     form_class = UserForm
-    template_name = 'games/login_form.html'
+    template_name = 'games/registration_form.html'
 
     def get(self, request):
         form = self.form_class(None)
