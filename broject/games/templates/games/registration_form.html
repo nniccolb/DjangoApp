@@ -1,6 +1,6 @@
 {% extends 'games/base.html' %}
 {% block body %}
-
+    <a href="{% url 'games:login' %}"> Back </a>
     <form action="" method="POST">
         {% csrf_token %}
         {% include 'games/form-template.html' %}

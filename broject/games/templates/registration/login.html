@@ -1,11 +1,13 @@
 {% extends 'games/base.html' %}
 {% block body %}
-
+<a href="{% url 'games:index' %}">Back </a>
 <h2>Login</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Login</button>
+  <p> Not yet a user? </p>
+  <a href="{% url 'games:registration' %}">Register</a>
 </form>
 
 {% endblock %}
