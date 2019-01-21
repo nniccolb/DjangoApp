@@ -4,7 +4,9 @@
   {% if all_categories %}
   <ul class="list-group">
       {% for category in all_categories %}
-      <li class="list-group-item"><a href="{% url 'games:categoryView' category.id %}">{{ category.name }}</a></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center"><a href="{% url 'games:categoryView' category.id %}">{{ category.name }}</a>
+        <span class="badge badge-primary badge-pill">{{category.game_set.count}} game(s) available</span>
+      </li>
       {% endfor %}
   </ul>
 

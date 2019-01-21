@@ -11,13 +11,15 @@
   </p>
   {% endif %}
 
+  <ul class="list-group">
   {% csrf_token %}
     {% for game in category.game_set.all %}
-      <label for="game{{ forloop.counter }}">
-      <a href="{% url 'games:gameView' category.id game.id %}">
+      
+      <li class="list-group-item"><a href="{% url 'games:gameView' category.id game.id %}">
         {{game.title}}
       </a>
-      </label> <br />
+      </li>
 
     {% endfor %}
+  </ul>
 {% endblock %}
