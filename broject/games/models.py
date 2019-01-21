@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -19,3 +20,10 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    userType = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.userType

@@ -8,7 +8,7 @@
        {% endfor %}
    </ul>
 
-   <p>Hello, {{request.user.username}}</p>
+   <p>Hello, {{request.user.username}}! You are a {{request.user.userprofile}}</p>
 
    {% else %}
       <a>No categories to display</a>

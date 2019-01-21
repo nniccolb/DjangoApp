@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Game
+from .models import Category, Game, UserProfile
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.contrib.auth import login, authenticate
@@ -42,9 +42,10 @@ class Registration(View):
             user = form.save(commit=False)
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            usertype = form.cleaned_data['user_type']
             user.set_password(password)
             user.save()
-
+            UserProfile.objects.create(user=user, userType=usertype)
             user = authenticate(username=username, password=password)
 
             if user is not None:
