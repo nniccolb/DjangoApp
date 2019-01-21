@@ -2,11 +2,11 @@
 {% block body %}
 
   {% if all_categories %}
-  <ul>
-       {% for category in all_categories %}
-       <li><a href="{% url 'games:categoryView' category.id %}">{{ category.name }}</a></li>
-       {% endfor %}
-   </ul>
+  <ul class="list-group">
+      {% for category in all_categories %}
+      <li class="list-group-item"><a href="{% url 'games:categoryView' category.id %}">{{ category.name }}</a></li>
+      {% endfor %}
+  </ul>
 
    <p>Hello, {{request.user.username}}! You are a {{request.user.userprofile}}</p>
 
