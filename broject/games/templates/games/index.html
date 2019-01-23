@@ -2,17 +2,18 @@
 {% block body %}
 
   {% if all_categories %}
-  <ul class="list-group">
-      {% for category in all_categories %}
-      <li class="list-group-item d-flex justify-content-between align-items-center"><a href="{% url 'games:categoryView' category.id %}">{{ category.name }}</a>
-        <span class="badge badge-primary badge-pill">{{category.game_set.count}} game(s) available</span>
-      </li>
-      {% endfor %}
-  </ul>
-
-   <p>Hello, {{request.user.username}}! You are a {{request.user.userprofile}}</p>
-
-   {% else %}
-      <a>No categories to display</a>
-      {% endif %}
+  <div class="container">
+    <ul class="list-group">
+        {% for category in all_categories %}
+        <li class="list-group-item d-flex justify-content-between align-items-center"><a href="{% url 'games:categoryView' category.id %}">{{ category.name }}</a>
+          <span class="badge badge-primary badge-pill">{{category.game_set.count}} game(s) available</span>
+        </li>
+        {% endfor %}
+    </ul>
+  
+    <p>Hello, {{request.user.username}}! You are a {{request.user.userprofile}}</p>
+  </div>
+  {% else %}
+        <a>No categories to display</a>
+  {% endif %}
 {% endblock %}

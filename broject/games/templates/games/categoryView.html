@@ -1,7 +1,7 @@
 {% extends 'games/base.html' %}
 {% block body %}
 
-  <p> {{category.name}} </p>
+  <h3 class="category_header"> {{category.name}} </h3>
 
   {% if error_message %}
   <p>
@@ -11,15 +11,17 @@
   </p>
   {% endif %}
 
-  <ul class="list-group">
+  <ul class="game_list">
   {% csrf_token %}
     {% for game in category.game_set.all %}
       
-      <li class="list-group-item"><a href="{% url 'games:gameView' category.id game.id %}">
-        {{game.title}}
+    <div class="game_container">
+      <div class="img_container"></div>
+      <li class="game_title"><a href="{% url 'games:gameView' category.id game.id %}">
+        {{game.title}} - {{ game.price }}€
       </a>
       </li>
-
+    </div>
     {% endfor %}
   </ul>
 {% endblock %}

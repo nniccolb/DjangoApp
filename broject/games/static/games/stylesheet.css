@@ -1,3 +1,36 @@
 body {
     background: whitesmoke url("images/wall_bg.jpg");
+    font-family: 'Montserrat';
+}
+
+.container {
+    width: 80%;
+}
+
+.img_container {
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+    background: black;
+}
+
+.game_title {
+    list-style-type: none;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    background: white;
+}
+
+.category_header {
+    text-align: center;
+}
+
+.game_container {
+    display: inline-block;
+}
+
+.game_list {
+    align-content: center;
+    width: 98%;
 }
