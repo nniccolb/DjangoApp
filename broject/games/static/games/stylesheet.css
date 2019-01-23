@@ -37,3 +37,20 @@ body {
 .gameView_title {
     text-align: center;
 }
+
+.iframe_container {
+    position: relative;
+    overflow: hidden;
+    width: 99vw;
+    height: 80vh;
+}
+
+.iframe_container iframe {
+    border: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+ }
+
