@@ -17,7 +17,7 @@
       
     <div class="game_container">
       <div class="img_container">
-        <img src="https://d2d00szk9na1qq.cloudfront.net/Product/8c8a442f-238a-4644-afc4-d46ef7778b5d/Images/Large_RFR-005.jpg" height="150px" width="150px">
+        <img src="{{ game.image }}" height="150px" width="150px">
       </div>
       <li class="game_title"><a href="{% url 'games:gameView' category.id game.id %}">
         {{game.title}} - {{ game.price }}€

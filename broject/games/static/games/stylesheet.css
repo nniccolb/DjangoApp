@@ -33,3 +33,7 @@ body {
     align-content: center;
     width: 98%;
 }
+
+.gameView_title {
+    text-align: center;
+}

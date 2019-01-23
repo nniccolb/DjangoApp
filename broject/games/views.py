@@ -25,7 +25,7 @@ class GameView(generic.DetailView):
     template_name = 'games/gameView.html'
 class GameCreate(CreateView):
     model = Game
-    fields = ['category', 'price', 'title', 'source']
+    fields = ['category', 'price', 'title', 'source', 'image']
 
 class Registration(View):
     form_class = UserForm

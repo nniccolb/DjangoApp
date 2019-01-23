@@ -2,17 +2,14 @@
 {% block body %}
 
 
-  <p>
+  <h3 class="gameView_title">
     {{game.title}}
-    {{game.price}}
-    <iframe
-      width="1263"
-      height="480"
-      src="https://www.experts-exchange.com/questions/28624265/django-add-iframe-element-containing-source-url-of-my-web-page-inside-another-site.html"
+  </h3>  
+  <iframe
+      width="100%"
+      height="auto"
+      src="{{ game.source }}"
       >
-    </iframe>
-  </p>
-
-
+  </iframe>
 
 {% endblock %}
