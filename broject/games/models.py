@@ -13,10 +13,10 @@ class Game(models.Model):
     price = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
-    favorite = models.BooleanField(default=False)
+    image = models.CharField(max_length=500)
 
     def get_absolute_url(self):
-        return reverse( 'games:index')
+        return reverse('games:index')
 
     def __str__(self):
         return self.title

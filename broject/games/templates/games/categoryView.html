@@ -16,7 +16,8 @@
     {% for game in category.game_set.all %}
       
     <div class="game_container">
-      <div class="img_container"></div>
+      <div class="img_container" style="background-image: url(game.image)">
+      </div>
       <li class="game_title"><a href="{% url 'games:gameView' category.id game.id %}">
         {{game.title}} - {{ game.price }}€
       </a>
