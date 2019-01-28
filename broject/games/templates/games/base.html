@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Gamestore</title>
+
   {% load staticfiles %}
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -37,12 +38,16 @@
                     <li class="">
                             <a href="{% url 'index' %}">
                                 <span class="" aria-hidden="true"></span>Games
+
                             </a>
+
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="">
-                      {% if request.user.is_authenticated %}
+
+                   {% if request.user.userprofile.userType == "Developer" %}
+
 
                         <a href="{% url 'games:game-add' %}">
 

@@ -1,6 +1,6 @@
 {% extends 'games/base.html' %}
 {% block body %}
-
+   {% if request.user.userprofile.userType == "Developer" %}
     <form action="" method="POST">
         {% csrf_token %}
         {% include 'games/form-template.html' %}
@@ -8,5 +8,8 @@
             <button type="submit">Submit</button>
         </div>
     </form>
+    {% else %}
+    <p> You must be a developer to be able to add games </p>
+{% endif %}
 
 {% endblock %}
