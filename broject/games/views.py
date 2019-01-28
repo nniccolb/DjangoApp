@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth import login, authenticate
 from django.views.generic import View
 from .forms import UserForm
+from hashlib import md5
 
 
 class IndexView(generic.ListView):
@@ -54,3 +55,27 @@ class Registration(View):
                     return redirect('games:index')
 
         return render(request, self.template_name, {'form': form})
+
+
+def checksum(request, game_pk,category_pk):
+    game = Game.objects.get(id=game_pk)
+    pid = request.user.id
+    sid = 'broject112'
+    amount = game.price
+    secret_key = 'ec5ed80e615f3d4739e689d6e24b4b81'
+    unhashed = "pid={}&sid={}&amount={}&token={}".format(pid, sid, amount, secret_key)
+    m = md5(unhashed.encode("ascii"))
+    checksum = m.hexdigest()
+    context = {
+			'pid': pid,
+			'sid': sid,
+			'amount': amount,
+			'secret_key': secret_key,
+			'checksum': checksum,
+			'game_id': game_pk,
+			'game': game,
+			
+    }
+
+	# sending context to payment-template
+    return render(request, 'games/gameView.html', context)

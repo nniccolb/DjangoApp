@@ -11,5 +11,6 @@ urlpatterns = [
     #path('login/', views.login, name='login'),
     path('<int:category_pk>/', views.DetailView.as_view(), name='categoryView'),
     path('<int:category_pk>/<int:game_pk>/', views.GameView.as_view(), name='gameView'),
+    path('<int:category_pk>/<int:game_pk>/buy/', views.checksum, name='gameView'),
     path('add/', views.GameCreate.as_view(), name='game-add'),
 ]

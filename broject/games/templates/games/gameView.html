@@ -3,11 +3,37 @@
 
   <h3 class="gameView_title">
     {{game.title}}
-  </h3> 
-  <div class="iframe_container">
-    <iframe
-      src="{{ game.source }}"
-      >
-    </iframe>
-  </div>
+  </h3>
+
+
+  <div id="form">
+	<h3>Buy game</h3>
+
+	<form action="http://payments.webcourse.niksula.hut.fi/pay/" method="POST">
+	    <input type="hidden" name="pid" value={{pid}} />
+	    <input type="hidden" name="sid" value={{sid}} />
+	    <input type="hidden" name="success_url"
+	            value="http://localhost:8000/games" />
+	    <input type="hidden" name="cancel_url"
+	            value="http://localhost:8000/games" />
+	    <input type="hidden" name="error_url"
+	            value="http://localhost:8000/games" />
+	    <input type="hidden" name="checksum"
+	            value={{checksum}} />
+	    <input type="hidden" id="id_amount" name="amount" value={{amount}} />
+      <p>Checksum: {{checksum}}</p>
+			<p>Confirm payment<p>
+			<ul>
+				<li><b>Game:</b> {{game.title}}</li>
+				<li><b>Price:</b> {{game.price}}€</li>
+			</ul>
+	    <input class="btn btn-primary" type="submit" value="Accept Payment"/>
+	</form>
+</div>
+<div class="iframe_container">
+  <iframe
+    src="{{ game.source }}"
+    >
+  </iframe>
+</div>
 {% endblock %}
