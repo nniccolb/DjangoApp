@@ -23,7 +23,7 @@ class Game(models.Model):
     source = models.CharField(max_length=500)
     
     image = models.CharField(max_length=500)
-    developer = models.ForeignKey('UserProfile', on_delete=models.PROTECT)
+    developer = models.ForeignKey('UserProfile', on_delete=models.PROTECT, default=1)
 
 
     def get_absolute_url(self):
