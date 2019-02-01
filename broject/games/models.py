@@ -15,6 +15,9 @@ class Game(models.Model):
     source = models.CharField(max_length=500)
     image = models.CharField(max_length=500)
 
+
+    developer = models.ForeignKey('UserProfile',on_delete=models.PROTECT)
+
     def get_absolute_url(self):
         return reverse('games:index')
 
@@ -24,6 +27,8 @@ class Game(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     userType = models.CharField(max_length=100)
+    games = models.ManyToManyField(Game)
+
 
     def __str__(self):
         return self.userType

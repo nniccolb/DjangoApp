@@ -13,4 +13,6 @@ urlpatterns = [
     path('<int:category_pk>/<int:game_pk>/', views.GameView.as_view(), name='gameView'),
     path('<int:category_pk>/<int:game_pk>/buy/', views.checksum, name='gameView'),
     path('add/', views.GameCreate.as_view(), name='game-add'),
+    path('<int:category_pk>/<int:game_id>/success/',views.success_payment,name='payment_success')
+
 ]

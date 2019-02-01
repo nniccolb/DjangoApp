@@ -74,8 +74,43 @@ def checksum(request, game_pk,category_pk):
 			'checksum': checksum,
 			'game_id': game_pk,
 			'game': game,
-			
+
     }
 
 	# sending context to payment-template
     return render(request, 'games/gameView.html', context)
+
+def success_payment(request,game_id,category_pk):
+    pid = request.GET['pid']
+    ref = request.GET['ref']
+
+    url_checksum = request.GET['checksum']
+
+    secret_key = "5ba99a03e46a687041b16ec552bcdf9c"
+
+    checksum_str = "pid={}&ref={}&result={}&token={}".format(pid, ref, "success", secret_key)
+
+    m = md5(checksum_str.encode("ascii"))
+    checksum = m.hexdigest()
+
+    #buyer_id = pid.split('-')[0]
+    #game_id = pid.split('-')[1]
+    game = Game.objects.get(id=game_id)
+    category = game.category
+
+    current_user = request.user
+
+    context = {
+	    'game': game,
+        'category': category,
+
+    }
+
+    if request.user.is_authenticated:
+	    if url_checksum == checksum and str(current_user.id) == user_id and str(game_id) == gameid:
+
+		    user = UserProfiles.objects.get(id=current_user.id)
+
+
+
+    return render(request, 'games/payment_success.html', context)
