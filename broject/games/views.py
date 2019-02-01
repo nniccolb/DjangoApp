@@ -108,6 +108,7 @@ def success_payment(request,game_id,category_pk):
 
     if request.user.is_authenticated:
 	    if url_checksum == checksum and str(current_user.id) == user_id and str(game_id) == gameid:
+            
 
 		    user = UserProfiles.objects.get(id=current_user.id)
 
