@@ -30,10 +30,12 @@
 	    <input class="btn btn-primary" type="submit" value="Accept Payment"/>
 	</form>
 </div>
+{% if game in request.user.userprofile.games.all %}
 <div class="iframe_container">
   <iframe
     src="{{ game.source }}"
     >
   </iframe>
 </div>
+{% endif %}
 {% endblock %}
