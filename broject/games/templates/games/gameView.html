@@ -1,11 +1,18 @@
 {% extends 'games/base.html' %}
 {% block body %}
-
   <h3 class="gameView_title">
     {{game.title}}
-  </h3>
+	</h3>
+	
+{% if game in request.user.userprofile.games.all %}
+<div class="iframe_container">
+  <iframe
+    src="{{ game.source }}"
+    >
+  </iframe>
+</div>
 
-
+{% else %}
   <div id="form">
 
 	<h3>Buy game!</h3>
@@ -31,12 +38,6 @@
 	    <input class="btn btn-primary" type="submit" value="Accept Payment"/>
 	</form>
 </div>
-{% if game in request.user.userprofile.games.all %}
-<div class="iframe_container">
-  <iframe
-    src="{{ game.source }}"
-    >
-  </iframe>
-</div>
+
 {% endif %}
 {% endblock %}

@@ -74,7 +74,6 @@ def checksum(request, game_pk,category_pk):
 			'checksum': checksum,
 			'game_id': game_pk,
 			'game': game,
-
     }
 
 	# sending context to payment-template
@@ -109,9 +108,9 @@ def success_payment(request,game_id,category_pk):
     if request.user.is_authenticated:
 	    if url_checksum == checksum and str(current_user.id) == user_id and str(game_id) == gameid:
             
-
 		    user = UserProfiles.objects.get(id=current_user.id)
 
-
+    #add game to user bought games
+    request.user.userprofile.games.add(game)
 
     return render(request, 'games/payment_success.html', context)
