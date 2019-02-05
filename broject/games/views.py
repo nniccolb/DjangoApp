@@ -8,7 +8,11 @@ from django.views.generic import View
 from .forms import UserForm
 from hashlib import md5
 from django.core import serializers
-
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_text
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from .tokens import account_activation_token
 
 class IndexView(generic.ListView):
     template_name = 'games/index.html'
@@ -48,7 +52,21 @@ class Registration(View):
             password = form.cleaned_data['password']
             usertype = form.cleaned_data['user_type']
             user.set_password(password)
+            #added
+            user.is_active = False
+            #end added
             user.save()
+
+            #added
+            current_site = get_current_site(request)
+            mail_subject = 'Activate your blog account.'
+            message = render_to_string('acc_active_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                'token':account_activation_token.make_token(user),
+            })
+            #end added
             UserProfile.objects.create(user=user, userType=usertype)
             user = authenticate(username=username, password=password)
 
