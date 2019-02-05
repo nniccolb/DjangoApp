@@ -5,11 +5,26 @@
 	</h3>
 	
 {% if game in request.user.userprofile.games.all %}
+<script>
+	$(document).ready(function() {
+    'use strict';
+    $(window).on('message', function(evt) {
+      //Note that messages from all origins are accepted
+      //Get data from sent message
+      var data = evt.originalEvent.data;
+			$('#score').html("You have posted your current score of: " + data);
+    });
+  });
+</script>
 <div class="iframe_container">
   <iframe
     src="{{ game.source }}"
     >
   </iframe>
+</div>
+<div>
+	<p id="score"></p>
+	<p>High score for this game: {{game.highscore}}</p>
 </div>
 
 {% else %}

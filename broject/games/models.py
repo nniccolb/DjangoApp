@@ -18,9 +18,10 @@ class UserProfile(models.Model):
 
 class Game(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    price = models.IntegerField(default=0)
+    price = models.PositiveIntegerField(default=0)
     title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
+    highscore = models.PositiveIntegerField(default=0)
     
     image = models.CharField(max_length=500)
     developer = models.ForeignKey('UserProfile', on_delete=models.PROTECT, default=1)
