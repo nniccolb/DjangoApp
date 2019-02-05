@@ -1,4 +1,4 @@
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Game, UserProfile
 from django.views import generic
@@ -59,16 +59,19 @@ class Registration(View):
 
             #added
             current_site = get_current_site(request)
-            mail_subject = 'Activate your blog account.'
-            message = render_to_string('acc_active_email.html', {
+            subject = 'Activate your blog account.'
+            message = render_to_string('account_activation.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
                 'token':account_activation_token.make_token(user),
             })
+            user.email_user(subject, message)
+            return redirect('account_activation_sent')
             #end added
-            UserProfile.objects.create(user=user, userType=usertype)
-            user = authenticate(username=username, password=password)
+            
+            #UserProfile.objects.create(user=user, userType=usertype)
+            #user = authenticate(username=username, password=password)
 
             if user is not None:
                 if user.is_active:
@@ -134,3 +137,6 @@ def success_payment(request,game_id,category_pk):
     request.user.userprofile.games.add(game)
 
     return render(request, 'games/payment_success.html', context)
+
+def account_activation_sent(request):
+    return HttpResponse("Email sent")
