@@ -12,7 +12,12 @@
       //Note that messages from all origins are accepted
       //Get data from sent message
       var data = evt.originalEvent.data;
-			$('#score').html("You have posted your current score of: " + data);
+			var currhs = '{{game.highscore}}';
+			if(data > currhs) {
+				$('#score').html("New high score!");
+			} else {
+				$('#score').html("You have posted your current score of: " + data);
+			};
     });
   });
 </script>
