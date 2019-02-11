@@ -63,7 +63,7 @@ class Registration(View):
             message = render_to_string('account_activation.html', {
                 'user': user,
                 'domain': current_site.domain,
-                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token':account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
@@ -143,7 +143,9 @@ def account_activation_sent(request):
 
 def activate(request, uidb64, token):
 
-    uid = force_text(urlsafe_base64_decode(uidb64))
+    #uid = force_text(urlsafe_base64_decode(uidb64))
+    uid = urlsafe_base64_decode(uidb64).decode()
+    #uid = unicode(uid, errors='replace')
     user = UserProfile.objects.get(pk=uid)
 
 
