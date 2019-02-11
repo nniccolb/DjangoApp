@@ -67,16 +67,16 @@ class Registration(View):
                 'token':account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
-            return redirect('account_activation_sent')
+            return redirect('games:account_activation_sent')
             #end added
 
             #UserProfile.objects.create(user=user, userType=usertype)
             #user = authenticate(username=username, password=password)
 
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('games:index')
+            #if user is not None:
+            #   if user.is_active:
+            #        login(request, user)
+            #        return redirect('games:index')
 
         return render(request, self.template_name, {'form': form})
 
@@ -140,15 +140,16 @@ def success_payment(request,game_id,category_pk):
 
 def account_activation_sent(request):
     return HttpResponse("Email sent")
+
 def activate(request, uidb64, token):
 
     uid = force_text(urlsafe_base64_decode(uidb64))
-    user = User.objects.get(pk=uid)
+    user = UserProfile.objects.get(pk=uid)
 
 
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
-        user.profile.email_confirmed = True
+        user.userprofile.email_confirmed = True
         user.save()
         login(request, user)
         return redirect('games:index')
