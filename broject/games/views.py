@@ -144,10 +144,9 @@ def account_activation_sent(request):
 def activate(request, uidb64, token):
 
     #uid = force_text(urlsafe_base64_decode(uidb64))
-    uid = urlsafe_base64_decode(uidb64).decode()
+    uid = urlsafe_base64_encode(uidb64).decode()
     #uid = unicode(uid, errors='replace')
     user = UserProfile.objects.get(pk=uid)
-
 
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
@@ -156,4 +155,4 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('games:index')
     else:
-        return render(request, 'games/account_activation.html')
+        return render(request, 'account_activation.html')
