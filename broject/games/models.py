@@ -22,8 +22,7 @@ class UserProfile(models.Model):
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
+    UserProfile.objects.create(user=instance)
     instance.userprofile.save()
 
 class Game(models.Model):
@@ -32,7 +31,7 @@ class Game(models.Model):
     title = models.CharField(max_length=100)
     source = models.CharField(max_length=500)
     highscore = models.PositiveIntegerField(default=0)
-    
+
     image = models.CharField(max_length=500)
     developer = models.ForeignKey('UserProfile', on_delete=models.PROTECT, default=1)
 

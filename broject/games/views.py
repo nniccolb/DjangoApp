@@ -56,6 +56,8 @@ class Registration(View):
             user.is_active = False
             #end added
             user.save()
+            user.userprofile.save()
+            #user.userprofile.save()
 
             #added
             current_site = get_current_site(request)
@@ -64,7 +66,7 @@ class Registration(View):
                 'user': user,
                 'domain': current_site.domain,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-                'token':account_activation_token.make_token(user),
+                'token':account_activation_token.make_token(user.userprofile),
             })
             user.email_user(subject, message)
             return redirect('games:account_activation_sent')
@@ -143,9 +145,10 @@ def account_activation_sent(request):
 
 def activate(request, uidb64, token):
 
-    #uid = force_text(urlsafe_base64_decode(uidb64))
-    uid = urlsafe_base64_encode(uidb64).decode()
+    uid = force_text(urlsafe_base64_decode(uidb64))
+    #uid = urlsafe_base64_encode(uidb64).decode()
     #uid = unicode(uid, errors='replace')
+    uid = 2
     user = UserProfile.objects.get(pk=uid)
 
     if user is not None and account_activation_token.check_token(user, token):
@@ -155,4 +158,4 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('games:index')
     else:
-        return render(request, 'account_activation.html')
+        return render(request, 'games:categoryView')
