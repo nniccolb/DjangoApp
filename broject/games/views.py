@@ -13,6 +13,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from .tokens import account_activation_token
+from django.contrib.auth.models import User
 
 class IndexView(generic.ListView):
     template_name = 'games/index.html'
@@ -48,29 +49,21 @@ class Registration(View):
 
         if form.is_valid():
             user = form.save(commit=False)
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            usertype = form.cleaned_data['user_type']
-            user.set_password(password)
-            #added
             user.is_active = False
-            #end added
             user.save()
-            user.userprofile.save()
-            #user.userprofile.save()
-
-            #added
+            usertype = form.cleaned_data['user_type']
+ 
             current_site = get_current_site(request)
-            subject = 'Activate your blog account.'
+            subject = 'Activate your account.'
             message = render_to_string('account_activation.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-                'token':account_activation_token.make_token(user.userprofile),
+                'token':account_activation_token.make_token(user),
+                'utype': usertype,
             })
             user.email_user(subject, message)
             return redirect('games:account_activation_sent')
-            #end added
 
             #UserProfile.objects.create(user=user, userType=usertype)
             #user = authenticate(username=username, password=password)
@@ -143,17 +136,17 @@ def success_payment(request,game_id,category_pk):
 def account_activation_sent(request):
     return HttpResponse("Email sent")
 
-def activate(request, uidb64, token):
+def activate(request, uidb64, token, utype):
+
 
     uid = force_text(urlsafe_base64_decode(uidb64))
-    #uid = urlsafe_base64_encode(uidb64).decode()
-    #uid = unicode(uid, errors='replace')
-    uid = 2
-    user = UserProfile.objects.get(pk=uid)
+    user = User.objects.get(pk=uid)
+
 
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
-        user.userprofile.email_confirmed = True
+        user.email_confirmed = True
+        user.userprofile.userType = utype
         user.save()
         login(request, user)
         return redirect('games:index')

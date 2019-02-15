@@ -22,7 +22,8 @@ class UserProfile(models.Model):
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
-    UserProfile.objects.create(user=instance)
+    if created:
+        UserProfile.objects.create(user=instance)
     instance.userprofile.save()
 
 class Game(models.Model):
