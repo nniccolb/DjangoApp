@@ -1,6 +1,6 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Game, UserProfile
+from .models import Category, Game, UserProfile, Score
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.contrib.auth import login, authenticate
@@ -56,7 +56,7 @@ class Registration(View):
             usertype = form.cleaned_data['user_type']
             global utype
             utype = usertype
- 
+
             current_site = get_current_site(request)
             subject = 'Activate your account.'
             message = render_to_string('account_activation.html', {
@@ -148,3 +148,11 @@ def activate(request, uidb64, token):
         return redirect('games:index')
     else:
         return render(request, 'games:categoryView')
+def save(request):
+    score = request.GET['score']
+    user = request.GET['user']
+    game = request.GET['game']
+    userProf = UserProfile.objects.get(pk=user)
+    gameObj = Game.objects.get(pk=game)
+    Score.objects.create(game=gameObj, player=userProf, value=score)
+    return HttpResponse('Score logged to database!')

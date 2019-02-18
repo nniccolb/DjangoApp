@@ -3,7 +3,7 @@
   <h3 class="gameView_title">
     {{game.title}}
 	</h3>
-	
+
 {% if game in request.user.userprofile.games.all %}
 <script>
 	$(document).ready(function() {
@@ -14,7 +14,19 @@
       var data = evt.originalEvent.data;
 			var currhs = '{{score.objects.all}}';
 			if(data > currhs) {
-				$('#score').html("New high score!");
+        $.ajax({
+          type: 'GET',
+          data: {
+            'score': data,
+            'game': '{{game.id}}',
+            'user': '{{request.user.userprofile.id}}'
+          },
+          url: '{% url 'games:save' %}',
+          success: function(data){
+            $('#score').html(data);
+          }
+        });
+
 			} else {
 				$('#score').html("You have posted your current score of: " + data);
 			};
@@ -29,7 +41,7 @@
 </div>
 <div>
 	<p id="score"></p>
-	<p>High scores for this game: {{score.objects.all}}</p>
+	<p>High score for this game: {{score.objects.all}}</p>
 </div>
 
 {% else %}

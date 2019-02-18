@@ -16,4 +16,5 @@ urlpatterns = [
     path('<int:category_pk>/<int:game_id>/success/',views.success_payment,name='payment_success'),
     path('account_activation_sent/', views.account_activation_sent, name='account_activation_sent'),
     path('register/<uidb64>/<token>/', views.activate, name='activate'),
+    path('save/', views.save, name='save') 
 ]
