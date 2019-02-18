@@ -84,6 +84,7 @@ def checksum(request, game_pk,category_pk):
     unhashed = "pid={}&sid={}&amount={}&token={}".format(pid, sid, amount, secret_key)
     m = md5(unhashed.encode("ascii"))
     checksum = m.hexdigest()
+    scores = Score.objects.filter(game=game).order_by('-value')[:5]
     context = {
 			'pid': pid,
 			'sid': sid,
@@ -92,6 +93,7 @@ def checksum(request, game_pk,category_pk):
 			'checksum': checksum,
 			'game_id': game_pk,
 			'game': game,
+            'scores': scores
     }
 
 	# sending context to payment-template
