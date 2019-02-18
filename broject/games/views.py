@@ -15,6 +15,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 
+utype = None
+
 class IndexView(generic.ListView):
     template_name = 'games/index.html'
     context_object_name = 'all_categories'
@@ -52,6 +54,8 @@ class Registration(View):
             user.is_active = False
             user.save()
             usertype = form.cleaned_data['user_type']
+            global utype
+            utype = usertype
  
             current_site = get_current_site(request)
             subject = 'Activate your account.'
@@ -60,18 +64,9 @@ class Registration(View):
                 'domain': current_site.domain,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token':account_activation_token.make_token(user),
-                'utype': usertype,
             })
             user.email_user(subject, message)
             return redirect('games:account_activation_sent')
-
-            #UserProfile.objects.create(user=user, userType=usertype)
-            #user = authenticate(username=username, password=password)
-
-            #if user is not None:
-            #   if user.is_active:
-            #        login(request, user)
-            #        return redirect('games:index')
 
         return render(request, self.template_name, {'form': form})
 
@@ -136,7 +131,7 @@ def success_payment(request,game_id,category_pk):
 def account_activation_sent(request):
     return HttpResponse("Email sent")
 
-def activate(request, uidb64, token, utype):
+def activate(request, uidb64, token):
 
 
     uid = force_text(urlsafe_base64_decode(uidb64))
@@ -146,6 +141,7 @@ def activate(request, uidb64, token, utype):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.email_confirmed = True
+        global utype
         user.userprofile.userType = utype
         user.save()
         login(request, user)
