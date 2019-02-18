@@ -12,7 +12,7 @@
       //Note that messages from all origins are accepted
       //Get data from sent message
       var data = evt.originalEvent.data;
-			var currhs = '{{game.highscore}}';
+			var currhs = '{{score.objects.all}}';
 			if(data > currhs) {
 				$('#score').html("New high score!");
 			} else {
@@ -29,7 +29,7 @@
 </div>
 <div>
 	<p id="score"></p>
-	<p>High score for this game: {{game.highscore}}</p>
+	<p>High scores for this game: {{score.objects.all}}</p>
 </div>
 
 {% else %}
