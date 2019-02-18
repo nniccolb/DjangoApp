@@ -24,8 +24,8 @@ class UserProfile(models.Model):
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
-    #tää v rikkoo adminin
-    instance.userprofile.save()
+    if instance.username != 'admin':
+        instance.userprofile.save()
 
 class Game(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
