@@ -24,6 +24,9 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Category.objects.all()
 
+def profile(request):
+    return render(request, 'games/profile.html')
+
 class DetailView(generic.DetailView):
     model = Category
     pk_url_kwarg='category_pk'
@@ -52,8 +55,9 @@ class Registration(View):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
-            user.save()
+            user.password = form.cleaned_data['password']
             usertype = form.cleaned_data['user_type']
+            user.save()
             global utype
             utype = usertype
 
@@ -139,8 +143,8 @@ def activate(request, uidb64, token):
 
 
     if user is not None and account_activation_token.check_token(user, token):
+        user.userprofile.email_confirmed = True
         user.is_active = True
-        user.email_confirmed = True
         global utype
         user.userprofile.userType = utype
         user.save()

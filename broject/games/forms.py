@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from .models import Game
 from django import forms
 
 USER_TYPES= (

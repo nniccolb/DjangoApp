@@ -1,0 +1,20 @@
+{% extends 'games/base.html' %}
+{% block body %}
+
+{% if request.user.userprofile.userType == "Developer" %}
+
+<div>
+{{request.user.userprofile.games.all}}
+</div>
+<div>
+{% for game in request.user.userprofile.games.all %}
+    <p>{{game.title}} has been bought {{game.times_sold}} times.</p>
+{% endfor %}
+</div>
+
+{% else %}
+
+<p>You are a customer</p>
+
+{% endif %}
+{% endblock %}

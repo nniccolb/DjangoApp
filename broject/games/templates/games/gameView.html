@@ -12,6 +12,7 @@
       //Note that messages from all origins are accepted
       //Get data from sent message
       var data = evt.originalEvent.data;
+<<<<<<< HEAD
 			var currhs = '{{score.objects.all}}';
 			if(data > currhs) {
         $.ajax({
@@ -27,8 +28,13 @@
           }
         });
 
+=======
+			//var currhs = '{{score.objects.all}}';
+			if(data > 0) {
+				$('#score').html("Yoo");
+>>>>>>> bb08514c9a9dfbe39a2b48ee3d99f59a8b256e5d
 			} else {
-				$('#score').html("You have posted your current score of: " + data);
+				$('#score').html("Yoo2");
 			};
     });
   });
@@ -41,7 +47,11 @@
 </div>
 <div>
 	<p id="score"></p>
+<<<<<<< HEAD
 	<p>High score for this game: {{score.objects.all}}</p>
+=======
+	<p>High scores for this game: </p>
+>>>>>>> bb08514c9a9dfbe39a2b48ee3d99f59a8b256e5d
 </div>
 
 {% else %}
