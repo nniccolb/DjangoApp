@@ -58,6 +58,13 @@ This is the documentation of our project. First there are description of feature
     The game can be found from GitHub,
     from link <a href="https://github.com/jonatanlygdman/jonatanlygdman.github.io"> Link to our game </a>
 
+  ----- Success and failures
+  
+  We think that basic use of Django was easy and we had no large trouble in functionalities. The only enormous challenge was deploying our 
+  app to Heroku. We tried that dozens of hours, even some with an assistant with no results. Finally one of our group managed to do that,
+  without that struggle we would have time to complete more extra features as well.
+
+
 
   -----  Teamwork
 
