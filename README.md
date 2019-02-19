@@ -1,7 +1,5 @@
 # Wsd 2018 project Colb Paukkeri Lygdman
 
-Documentation
-
 
 Project team members:
 *Nicholas Colb 591301
@@ -33,7 +31,6 @@ Finally, there is link to our application hosted in Heroku and instructions on h
 
 
     - Basic developer functionalities
-
 
     A developer can add games by url (and set price etc). Only a developer can add games.
     The statistics of how many times a given game has been bought can be seen in the developer's profile. We did not implement the ability
