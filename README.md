@@ -1,79 +1,69 @@
 # Wsd 2018 project Colb Paukkeri Lygdman
 
+Documentation
+
+
 Project team members:
 Nicholas Colb 591301
 Akseli Paukkeri 474995
 Jonatan Lygdman 540654
 
 
-In this project we will implement game store with Django framework. Users can sign in as either players or developers. 
-In the game store, there are web-based games that developers can add to store, and players who can buy and play games they have bought. 
-In this project plan there are list of features we will provide in the game store. 
-At the end of the plan, there are implementation of the Django models, views and also our timetable to complete this project. 
+This is the documentation of our project. First there are description of features completed, after that there is basic information of workload and teamwork. At the end, there is link to our application hosted in Heroku and instructions to use it.
 
 
----- Features of the webshop 
+---- Features of the webshop
 
     - Authentication
 
-    We plan on implementing authentication through email validation and 3rd party authentication. 
-    We will use Django’s authentication for registration and other issues considered. 
+    We implemented login, logout and register functionalities with email validation. All works smoothly with Django auth so we think we deserve 200/200 points from that.
 
-    - Basic player functionalities 
-    
+    - Basic player functionalities
+
     Buy/play games. Buying happens through the courses payment system.
-	We also plan on categorizing the games so the users can find them more easily. 
-	Player can play only games what has been bought. From back-end, we will provide auth for that. 
+	We also categorized the games so the users can find them more easily.
+	Player can play only games what has been bought. From back-end, we will provide auth for that. Since everything works, we think we deserve 300p from this section.
+
+
 
     - Basic developer functionalities
 
-    Add and modify games in addition to all the same functionalities that the players have. 
-    Developer can add games to the store by a link for correct files. 
+
+    A developer can add games by url (and set price etc). Only developer can add games. Sales statistics of developer's own games can be seen in developers profile. We did not conduct the ability to modify or delete games from webstore. Since we have this mod/del functionality missing, we think we deserve 150/200p from this section.
 
     - Game/service interaction
 
-    High scores for games. When a game ends the app will compare the score with global high scores for the game.  
+    High scores for games. When a game ends the app will compare the score with global high scores for the game.  Since everything works, we think that 200/200p is correct amount of points.
 
-    - Games
+    - Quality of work
 
-    We have developed games for the course Verkkojulkaisemisen Perusteet that we plan on using in our project if we don’t have time to create new games.
-    We also plan on making the games shearable through social media.
+    The code is clean, stuctured and mostly commented. The application is structured as it should be in Django. User experience is good, and we've tested functionalities. Since there is nothing missing, we deserve 100p.
 
-    - Mobile Friendly
+    - Non-functional requirements
 
-    The webshop will be mobile-friendly. We will use the Bootstrap library to implement this
+    Impossible to analyze correctly. We made project plan and mostly sticked in it. We also made the project as a team - eventhough one of the members has significantly more commits than others. We think that 150p is enough for this section.
 
-    - GDPR considerations
+    - Own game
 
-	User must accept cookies to use site. We will make a pop-up window, where we elaborate data privacy issues in EU and provide options to accept cookies or not. 
-	
+    We developed simple game with JavaScript. The game can be found from GitHub, from link <a href="https://github.com/jonatanlygdman/jonatanlygdman.github.io"> Link to our game </a>
 
 
----- Views and models 
+  -----  Teamwork
 
-In our Django application, we will have models for User, Developer and Game. Also, in registration we will implement model for users Profile. 
-Also, in game store where we have different kinds of games we’ll probably have a model for game-category. 
-In Profile model, we we’ll have fields for username, email and password. User and developer use Profile model fields in their actions. 
-Game model will have fields such as name and price. Category model has Game models as a Foreignkey and category name. 
-In our app, we have views for registration page, home-page where the games are listed and own view for developers to download their games 
-to the store. Also, we have a view for purchasing games. Relating views and models, in registration page we use Profile, user and developer
-models. In home-page view, we have Game models listed, and for purchasing a game we have view which uses Game and User models. 
-In addition, when pushing game to the store as a developer, there is a spesific view for that. These are the minimum requirements for 
-models and views, but it is likely that there’ll be some more. 
+  We did not have any specific responsibilities. We had at least one meeting weakly and continued the work from last time. Our philosophy was to complete compulsory parts as fast as possible. Most of the meetings were just between two members instead of three, since we all were quite busy during this period.
 
+  Jonatan worked than Akseli or Nicholas, since he made some additional work outside the meetings, which can also be seen from amount of commits.
 
----- Work plan 
+  ----- Instructions
 
-In total, we have two months to complete this project. Since our team-members are quite busy in February, we will have two-week sprint at the 
-beginning of the January. In the sprint, we’ll complete the models, views, and basic functionality of the game-store. After that, we’ll meet 
-every week and calculate the workload approximately to one work day per week. Weekly meetings are most likely face-to-face, depending a 
-situation and problems we probably face. Still, the most important thing in our working plan is to complete the basics quickly in January. 
-After the basics, we will complete more functionalities and features to our app in order that the compulsory are done first and optional
-after that. We plan to complete at least couple of optional features if we have time at the end. 
+  <a href="http://webstorefinal.herokuapp.com/games">Link to our app</a>
 
+  The link will take the user to our frontpage. To login, press nav-button in top-right corner and press Login. In the login page, there is button for registration if the user does not have an account yet. In the registration, there can be selected usertypes: developer or customer.
 
----- Timetable
+  When pressing register, an activation link comes to the user's email, and by pressing the link user get's again to the frontpage of our app.
 
-1. Models, views and finally templates (January 1 - January 14)
-2. Features starting from compulsory (January 14 - January 30)
-3. Testing and improving features (February 1 - February 19)
+  In the frontpage we have categories for games, and by pressing category it takes user to the page where are all games from specific category. To buy a game, user need to press the game name in the game view.
+
+  Registered user can also check his profile, where the user can see developed and bought games.
+
+  If user is a developer, game can be added from nav-button in top-right corner "Add game". If opens a form where developer puts specific information about the game, also URL.
