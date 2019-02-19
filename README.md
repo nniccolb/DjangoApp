@@ -16,7 +16,7 @@ First there is a description of completed features, followed by some basic infor
 Finally, there is link to our application hosted in Heroku and instructions on how to use it.
 
 
-## ---- Features of the webshop
+## Features of the webshop
 
     - Authentication
 
@@ -62,7 +62,7 @@ Finally, there is link to our application hosted in Heroku and instructions on h
     The game can be found from GitHub,
     from link <a href="https://github.com/jonatanlygdman/jonatanlygdman.github.io"> Link to our game </a>
 
-## ----- Success and failures
+## Success and failures
   
   We think that basic use of Django was easy and we had little trouble in learning its functionalities. The only significant challenge was deploying our 
   app to Heroku. We attended the lecture on Heroku deployment but found it too fast-paced to follow. The Heroku documentation was not thorough nor clear, and we went through 8-10 blogs/videos on how to structure the app and deploy it to the service. Many guides were misleading and deceptive. We pursued our efforts for approximately 30 hours and even struggled with an assistant without results. Finally one of our group managed to do it.
@@ -70,7 +70,7 @@ Finally, there is link to our application hosted in Heroku and instructions on h
 
 
 
-## -----  Teamwork
+## Teamwork
 
   We did not have any specific, designated tasks. We had at least one meeting weakly and continued the work from last time.
   Our philosophy was to complete compulsory parts as well as possible. Most of the meetings were just between two members, alternating between the group. 
