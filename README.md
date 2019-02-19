@@ -57,7 +57,7 @@ Finally, there is link to our application hosted in Heroku and instructions on h
 
     We developed simple game with JavaScript.
     The game can be found from GitHub,
-    from link [https://github.com/jonatanlygdman/jonatanlygdman.github.io](https://github.com/jonatanlygdman/jonatanlygdman.github.io)
+    from link [https://github.com/jonatanlygdman/jonatanlygdman.github.io](url)
 
 ## Success and failures
   
