@@ -58,7 +58,7 @@ This is the documentation of our project. First there is a description of comple
     The game can be found from GitHub,
     from link <a href="https://github.com/jonatanlygdman/jonatanlygdman.github.io"> Link to our game </a>
 
-  ----- Success and failures
+## ----- Success and failures
   
   We think that basic use of Django was easy and we had little trouble in learning its functionalities. The only significant challenge was deploying our 
   app to Heroku. We attended the lecture on Heroku deployment but found it too fast-paced to follow. The Heroku documentation was not thorough nor clear, and we went through 8-10 blogs/videos on how to structure the app and deploy it to the service. Many guides were misleading and deceptive. We pursued our efforts for approximately 30 hours and even struggled with an assistant without results. Finally one of our group managed to do it.
@@ -66,7 +66,7 @@ This is the documentation of our project. First there is a description of comple
 
 
 
-  -----  Teamwork
+## -----  Teamwork
 
   We did not have any specific, designated tasks. We had at least one meeting weakly and continued the work from last time.
   Our philosophy was to complete compulsory parts as well as possible. Most of the meetings were just between two members, alternating between the group. 
@@ -74,7 +74,7 @@ This is the documentation of our project. First there is a description of comple
   Jonatan worked more than Akseli or Nicholas, since he did a lot of additional work outside the meetings,
   which can also be seen from amount of commits. Nicholas and Akseli did, however, work quite a bit on debugging and the fiasco of deploying the app to Heroku. 
 
-  ----- **Instructions**
+### ----- **Instructions on how to use our app**
 
   <a href="http://webstorefinal.herokuapp.com/games">Link to our app</a>
 
@@ -82,7 +82,8 @@ This is the documentation of our project. First there is a description of comple
   In the login page, there is button for registration if the user does not have an account yet. In the registration,
   the user can select their user type: developer or customer.
   
-**IMPORTANT** : since the email validation works locally in the terminal, you should use pre-existing accounts to log in.
+# **IMPORTANT**  
+since the email validation works locally in the terminal, you should use pre-existing accounts to log in.
 
 *  For testing the customer's experience use credentials: username: *customer* password: *apple25!*
 *  For testing the developer's experience use credentials: username: *developer* password: *banana25!*
