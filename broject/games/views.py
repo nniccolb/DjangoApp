@@ -156,6 +156,7 @@ def success_payment(request,game_id,category_pk):
     #add game to user bought games
     request.user.userprofile.games.add(game)
     game.times_sold = game.times_sold + 1
+    game.save()
 
     return render(request, 'games/payment_success.html', context)
 
