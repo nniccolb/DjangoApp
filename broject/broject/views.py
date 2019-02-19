@@ -1,4 +1,4 @@
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("<h1>Frontpage (Nic on hieno ihminen :))</h1>")
+    return HttpResponse("Please make your way to the webstore <a href='games/'>here</a>")
