@@ -2,19 +2,19 @@
 {% block body %}
 
 {% if request.user.userprofile.userType == "Developer" %}
+<h3>Games you have developed:</h3>
 
-<div>
-{{request.user.userprofile.games.all}}
-</div>
+{% for game in games %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">{{game.title}} has been bought {{game.times_sold}} times.</li>
+{% endfor %}
+
+{% endif %}
+
+<h3>Games you have bought:</h3>
 <div>
 {% for game in request.user.userprofile.games.all %}
-    <p>{{game.title}} has been bought {{game.times_sold}} times.</p>
+    <li class="list-group-item d-flex justify-content-between align-items-center">{{game.title}}</li>
 {% endfor %}
 </div>
 
-{% else %}
-
-<p>You are a customer</p>
-
-{% endif %}
 {% endblock %}

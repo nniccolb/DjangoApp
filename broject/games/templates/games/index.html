@@ -1,6 +1,7 @@
 {% extends 'games/base.html' %}
 {% block body %}
 
+  <p>Hello, {{request.user.username}}! You are a {{request.user.userprofile.userType}}</p>
   {% if all_categories %}
   <div class="container">
     <ul class="list-group">
@@ -10,10 +11,8 @@
         </li>
         {% endfor %}
     </ul>
-  
-    <p>Hello, {{request.user.username}}! You are a {{request.user.userprofile.userType}}</p>
   </div>
   {% else %}
-        <a>No categories to display</a>
+        <p>No categories to display</p>
   {% endif %}
 {% endblock %}

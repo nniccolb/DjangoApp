@@ -25,7 +25,12 @@ class IndexView(generic.ListView):
         return Category.objects.all()
 
 def profile(request):
-    return render(request, 'games/profile.html')
+    user = request.user.userprofile
+    games = Game.objects.filter(developer=user)
+    context = {
+			'games': games,
+    }
+    return render(request, 'games/profile.html', context)
 
 class DetailView(generic.DetailView):
     model = Category
@@ -41,13 +46,11 @@ class GameCreate(CreateView):
     model = Game
     fields = ['category', 'price', 'title', 'source', 'image', 'developer']
 
-    def form_valid(self, form):
-        response = super(GameCreate, self).form_valid(form)
-        game = form.save(commit=False)
-        game.save()
-        dev = game.developer
-        dev.games.add(game)
-        return response
+#    def form_valid(self, form):
+#        response = super(GameCreate, self).form_valid(form)
+#        game = form.save(commit=False)
+#        game.save()
+#        return response
 
 #def create_game(request, **kwargs):
 #    if request.method == "POST":
@@ -149,6 +152,7 @@ def success_payment(request,game_id,category_pk):
 
     #add game to user bought games
     request.user.userprofile.games.add(game)
+    game.times_sold = game.times_sold + 1
 
     return render(request, 'games/payment_success.html', context)
 
