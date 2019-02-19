@@ -68,9 +68,8 @@ This is the documentation of our project. First there is a description of comple
 
   -----  Teamwork
 
-  We did not have any specific responsibilities. We had at least one meeting weakly and continued the work from last time.
-  Our philosophy was to complete compulsory parts as fast as possible. Most of the meetings were just between two members instead of three,
-  since we all were quite busy during this period.
+  We did not have any specific, designated tasks. We had at least one meeting weakly and continued the work from last time.
+  Our philosophy was to complete compulsory parts as well as possible. Most of the meetings were just between two members, alternating between the group. 
 
   Jonatan worked more than Akseli or Nicholas, since he did a lot of additional work outside the meetings,
   which can also be seen from amount of commits. Nicholas and Akseli did, however, work quite a bit on debugging and the fiasco of deploying the app to Heroku. 
@@ -87,7 +86,10 @@ This is the documentation of our project. First there is a description of comple
   
   In the frontpage we have categories for games, and by selecting a category it takes the user to the page where all the games from specific category are listed. 
   To buy a game, the user needs to press the game name in the game view.
+  
+  The high score feature only works on our primary game, "Ball game", as we did not implement the score system on our other game,
+  "Sun Jump". Sun Jump was a group project Jonatan was part of 2 years ago and was only added to the web store as a demo. 
 
   Registered users can also check their profile, where the user can see a list of developed and bought games.
 
-  If user is a developer, a game can be added from nav-button in top-right corner "Add game". It opens a form for the developer to enter specific details about the game. 
+  If user is a developer, a game can be added from nav-button in top-right corner "Add game". It opens a form for the developer to enter the required, specific details about the game. 
