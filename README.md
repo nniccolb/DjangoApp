@@ -10,12 +10,13 @@ Jonatan Lygdman 540654*
 
 
 
-**This is the documentation of our project. **
+**This is the documentation of our project.**
+
 First there is a description of completed features, followed by some basic information of the overall workload and teamwork. 
 Finally, there is link to our application hosted in Heroku and instructions on how to use it.
 
 
-##---- Features of the webshop
+## ---- Features of the webshop
 
     - Authentication
 
