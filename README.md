@@ -84,8 +84,8 @@ This is the documentation of our project. First there is a description of comple
   
 **IMPORTANT** : since the email validation works locally in the terminal, you should use pre-existing accounts to log in.
 
-*  For testing the customer's experience use credentials: username: customer password: apple25!
-*  For testing the developer's experience use credentials: username: developer password: banana25!
+*  For testing the customer's experience use credentials: username: *customer* password: *apple25!*
+*  For testing the developer's experience use credentials: username: *developer* password: *banana25!*
 
   With these accounts you can buy games and play them. Use the developer account to add new games! 
 
