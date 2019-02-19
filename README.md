@@ -82,7 +82,7 @@ This is the documentation of our project. First there is a description of comple
   In the login page, there is button for registration if the user does not have an account yet. In the registration,
   the user can select their user type: developer or customer.
   
- ** IMPORTANT: ** since the email validation works locally in the terminal, you should use pre-existing accounts to log in.
+**IMPORTANT** : since the email validation works locally in the terminal, you should use pre-existing accounts to log in.
 
 *  For testing the customer's experience use credentials: username: customer password: apple25!
 *  For testing the developer's experience use credentials: username: developer password: banana25!
