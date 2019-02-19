@@ -15,3 +15,9 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password', 'first_name', 'last_name', 'user_type']
+
+class GameForm(forms.ModelForm):
+    price = forms.FloatField()
+    class Meta:
+        model = Game
+        fields = ['category', 'price', 'title', 'source', 'image']

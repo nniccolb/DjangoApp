@@ -5,7 +5,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView
 from django.contrib.auth import login, authenticate
 from django.views.generic import View
-from .forms import UserForm
+from .forms import UserForm, GameForm
 from hashlib import md5
 from django.core import serializers
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -42,10 +42,22 @@ class GameView(generic.DetailView):
     pk_url_kwarg='game_pk'
     template_name = 'games/gameView.html'
 
-class GameCreate(CreateView):
-    model = Game
-    fields = ['category', 'price', 'title', 'source', 'image', 'developer']
+class GameCreate(View):
+    form_class = GameForm
+    template_name = 'games/game_form.html'
 
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            game = form.save(commit=False)
+            game.developer = request.user.userprofile
+            game.save()
+            return render(request, 'games/game_add_success.html')
+        return render(request, self.template_name, {'form': form})
 class Registration(View):
     form_class = UserForm
     template_name = 'games/registration_form.html'
