@@ -75,6 +75,6 @@ This is the documentation of our project. First there is a description of comple
 
   Registered users can also check their profile, where the user can see a list of developed and bought games.
 
-  To test the highscore functionality, checkout the ball game under action games. Our other game, Sun Jump, doesn't have the Javascript score feature implemented. 
+  To test the highscore functionality, checkout the ball game under action games.
 
   If user is a developer, a game can be added from nav-button in top-right corner "Add game". It opens a form for the developer to enter specific details about the game.
