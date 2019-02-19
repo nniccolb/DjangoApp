@@ -74,7 +74,7 @@ This is the documentation of our project. First there is a description of comple
   Jonatan worked more than Akseli or Nicholas, since he did a lot of additional work outside the meetings,
   which can also be seen from amount of commits. Nicholas and Akseli did, however, work quite a bit on debugging and the fiasco of deploying the app to Heroku. 
 
-### ----- **Instructions on how to use our app**
+###Instructions on how to use our app
 
   <a href="http://webstorefinal.herokuapp.com/games">Link to our app</a>
 
