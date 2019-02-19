@@ -14,6 +14,7 @@ urlpatterns = [
     path('<int:category_pk>/<int:game_pk>/', views.GameView.as_view(), name='gameView'),
     path('<int:category_pk>/<int:game_pk>/buy/', views.checksum, name='gameView'),
     path('add/', views.GameCreate.as_view(), name='game-add'),
+    #path('add/create_game', views.create_game, name='create_game'),
     path('<int:category_pk>/<int:game_id>/success/',views.success_payment,name='payment_success'),
     path('account_activation_sent/', views.account_activation_sent, name='account_activation_sent'),
     path('register/<uidb64>/<token>/', views.activate, name='activate'),

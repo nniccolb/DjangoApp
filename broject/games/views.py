@@ -39,7 +39,25 @@ class GameView(generic.DetailView):
 
 class GameCreate(CreateView):
     model = Game
-    fields = ['category', 'price', 'title', 'source', 'image']
+    fields = ['category', 'price', 'title', 'source', 'image', 'developer']
+
+    def form_valid(self, form):
+        response = super(GameCreate, self).form_valid(form)
+        game = form.save(commit=False)
+        game.save()
+        dev = game.developer
+        dev.games.add(game)
+        return response
+
+#def create_game(request, **kwargs):
+#    if request.method == "POST":
+#        dev = request.user.userprofile
+#        Game.objects.create(category=request.GET['category'])
+#        game = Game.objects.all().order_by('-pk')[0]
+#        dev.games.add(game)
+#        dev.save()
+#        return HttpResponse(game)
+#    return HttpResponse("Fail")
 
 class Registration(View):
     form_class = UserForm
