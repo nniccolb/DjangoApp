@@ -74,13 +74,21 @@ This is the documentation of our project. First there is a description of comple
   Jonatan worked more than Akseli or Nicholas, since he did a lot of additional work outside the meetings,
   which can also be seen from amount of commits. Nicholas and Akseli did, however, work quite a bit on debugging and the fiasco of deploying the app to Heroku. 
 
-  ----- Instructions
+  ----- **Instructions**
 
   <a href="http://webstorefinal.herokuapp.com/games">Link to our app</a>
 
   The link will take the user to our frontpage. 
   In the login page, there is button for registration if the user does not have an account yet. In the registration,
   the user can select their user type: developer or customer.
+  
+ ** IMPORTANT: ** since the email validation works locally in the terminal, you should use pre-existing accounts to log in.
+
+*  For testing the customer's experience use credentials: username: customer password: apple25!
+*  For testing the developer's experience use credentials: username: developer password: banana25!
+
+  With these accounts you can buy games and play them. Use the developer account to add new games! 
+
 
   When pressing register, an activation link will be sent to the user's email, and by pressing the link the user will be redirected to the frontpage of our app.
   
