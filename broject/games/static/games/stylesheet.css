@@ -1,10 +1,37 @@
 body {
-    background: whitesmoke url("images/wall_bg.jpg");
+    background: #222222 url("images/wall_bg.jpg");
     font-family: 'Montserrat';
 }
 
 .container {
     width: 80%;
+}
+
+#content {
+    width: 80%;
+    margin: auto;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form button {
+    margin-top: 10px;
+}
+
+#content h4 {
+    text-align: center;
+}
+
+.navbar {
+    border-radius: 0px;
 }
 
 .img_container {

@@ -141,7 +141,8 @@ def success_payment(request,game_id,category_pk):
     return render(request, 'games/payment_success.html', context)
 
 def account_activation_sent(request):
-    return HttpResponse("Email sent")
+    msg = "Your account activation email has been sent to you. Please click the link provided to log in to your account"
+    return HttpResponse(msg)
 
 def activate(request, uidb64, token):
 
