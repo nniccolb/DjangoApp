@@ -37,11 +37,6 @@ class DetailView(generic.DetailView):
     pk_url_kwarg='category_pk'
     template_name = 'games/categoryView.html'
 
-class GameView(generic.DetailView):
-    model = Game
-    pk_url_kwarg='game_pk'
-    template_name = 'games/gameView.html'
-
 class GameCreate(View):
     form_class = GameForm
     template_name = 'games/game_form.html'
@@ -101,7 +96,7 @@ def checksum(request, game_pk,category_pk):
     unhashed = "pid={}&sid={}&amount={}&token={}".format(pid, sid, amount, secret_key)
     m = md5(unhashed.encode("ascii"))
     checksum = m.hexdigest()
-    scores = Score.objects.filter(game=game).order_by('-value')[:5]
+    scores = Score.objects.filter(game=game).order_by('-value')[:10]
     context = {
 			'pid': pid,
 			'sid': sid,
