@@ -95,7 +95,7 @@ This is the documentation of our project. First there is a description of comple
   In the frontpage we have categories for games, and by selecting a category it takes the user to the page where all the games from specific category are listed. 
   To buy a game, the user needs to press the game name in the game view.
   
-  The high score feature only works on our primary game, "Ball game", as we did not implement the score system on our other game,
+  **The high score feature only works on our primary game, "Ball game",** as we did not implement the score system on our other game,
   "Sun Jump". Sun Jump was a group project Jonatan was part of 2 years ago and was only added to the web store as a demo. 
 
   Registered users can also check their profile, where the user can see a list of developed and bought games.
