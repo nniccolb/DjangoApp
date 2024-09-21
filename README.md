@@ -1,11 +1,4 @@
-# Wsd 2018 project Colb Paukkeri Lygdman
-
-
-Project team members:
-*Nicholas Colb 591301
-Akseli Paukkeri 474995
-Jonatan Lygdman 540654*
-
+# Django webstore project
 
 
 **This is the documentation of our project.**
@@ -67,13 +60,7 @@ Finally, there is link to our application hosted in Heroku and instructions on h
 
 
 
-## Teamwork
 
-  We did not have any specific, designated tasks. We had at least one meeting weakly and continued the work from last time.
-  Our philosophy was to complete compulsory parts as well as possible. Most of the meetings were just between two members, alternating between the group. 
-
-  Jonatan worked more than Akseli or Nicholas, since he did a lot of additional work outside the meetings,
-  which can also be seen from amount of commits. Nicholas and Akseli did, however, work quite a bit on debugging and the fiasco of deploying the app to Heroku. 
 
 # Instructions on how to use our app
 
